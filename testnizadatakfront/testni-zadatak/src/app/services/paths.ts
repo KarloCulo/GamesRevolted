@@ -1,0 +1,10 @@
+export const ACCOUNT = 'http://localhost:8080/useraccount/all';
+export const LOG = 'http://localhost:8080/log/all';
+export const LOGOUT = 'http://localhost:8080/log/logout';
+export const TOKEN = 'http://localhost:8080/token/all';
+export const TOKENREQUEST = 'http://localhost:8080/tokengenerationrequest/all';
+export const GENERATE = 'http://localhost:8080/tokengenerationrequest/generate';
+export const LOGIN = 'http://localhost:8080/useraccount/login';
+export const ACTIVATE = 'http://localhost:8080/token/activate';
+export const SAVEACCOUNT = 'http://localhost:8080/useraccount/save';
+export const SAVETOKEN = 'http://localhost:8080/token/save';

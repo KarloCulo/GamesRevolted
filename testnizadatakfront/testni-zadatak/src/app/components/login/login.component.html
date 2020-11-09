@@ -1,0 +1,18 @@
+<div style="text-align: center;">
+    <h1>Log in</h1>
+  </div>
+  
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <form class="form-width" [formGroup]="loginForm" (ngSubmit)='loginUser(loginForm)'>
+        <input type="text" class="username" name="login" placeholder="Username" formControlName="username" required>
+        <input type="password" class="password" name="login" placeholder="Password" formControlName="password"
+               required>
+        <div *ngIf='errormessage' class="alert alert-danger">
+          <span>{{errormessage}}</span>
+        </div>
+        <input type="submit" class="login" value="Log In">
+      </form>
+    </div>
+  </div>
+  

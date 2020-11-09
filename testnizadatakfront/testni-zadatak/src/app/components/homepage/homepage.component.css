@@ -1,0 +1,29 @@
+section {
+    height: 100vw;
+    width: 100vw;
+  }
+  
+  h1 {
+    text-align: center;
+    height: 200px;
+    width: 500px;
+    color: rgb(214, 26, 26);
+    font-style: italic;
+  
+    position: relative;
+    top: 500px;
+    left: 0px;
+  }
+  
+  
+  .wellcome {
+    background-image: url('/assets/img/hankey.png') !important;
+    width:500px;
+    height:500px;
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  

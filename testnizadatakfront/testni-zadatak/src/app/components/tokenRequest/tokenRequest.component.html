@@ -1,0 +1,41 @@
+<table mat-table [dataSource]="tokenRequests" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- User ID Column -->
+    <ng-container matColumnDef="userId">
+      <th mat-header-cell *matHeaderCellDef> User ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+    </ng-container>
+  
+    <!-- User Name Column -->
+    <ng-container matColumnDef="userName">
+      <th mat-header-cell *matHeaderCellDef> User Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.userName }} </td>
+    </ng-container>
+
+    <!-- Action button -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef [hidden]="!isAdmin">  </th>
+      <td mat-cell *matCellDef="let element" [hidden]="!isAdmin">
+           <button mat-button (click)="approve(element)" >Approve</button>
+          </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="tokenRequestColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: tokenRequestColumns;"></tr>
+  </table>
+  
+  <!-- Token Request -->
+  <tr *ngIf="!isAdmin">
+    <td>
+      <button class="button" (click)="requestGeneration()" type="button">Request Token</button>
+    </td>
+  </tr>

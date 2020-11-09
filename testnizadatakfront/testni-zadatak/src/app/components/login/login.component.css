@@ -1,0 +1,20 @@
+.username{
+    display: grid;
+    left: 400px;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+.password{
+    display: grid;
+    left: 500px;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+.login{
+    display: grid;
+    left: 300px;
+    margin-left: auto;
+    margin-right: auto;    
+}

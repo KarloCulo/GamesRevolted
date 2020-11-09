@@ -1,0 +1,17 @@
+<div mat-dialog-content [formGroup]="tokenForm">
+    <div >
+      <mat-form-field> 
+        <input matInput placeholder="value" formControlName="value" required>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field> 
+        <input matInput [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time" formControlName="endDate" required>
+        <owl-date-time #dt1></owl-date-time>
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="save()" [disabled]="!tokenForm.valid">Save</button>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+  </div>

@@ -1,0 +1,33 @@
+<div mat-dialog-content [formGroup]="accountForm">
+  <div >
+    <mat-form-field> 
+      <input matInput placeholder="name" formControlName="name" required>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field> 
+      <input matInput placeholder="password" formControlName="password" required>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field> 
+      <input matInput placeholder="role" formControlName="role" required>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field> 
+      <input matInput placeholder="balance" formControlName="balance" >
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field> 
+      <input matInput placeholder="requestsAvailable" formControlName="requestsAvailable" required>
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="save()" [disabled]="!accountForm.valid">Save</button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+</div>
+
+ 
