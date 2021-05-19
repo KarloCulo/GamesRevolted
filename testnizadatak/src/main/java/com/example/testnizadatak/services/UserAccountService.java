@@ -1,12 +1,10 @@
 package com.example.testnizadatak.services;
 
+import com.example.testnizadatak.models.Company;
 import com.example.testnizadatak.models.Log;
 import com.example.testnizadatak.models.LoginInfo;
 import com.example.testnizadatak.models.UserAccount;
-import com.example.testnizadatak.repository.LogRepository;
-import com.example.testnizadatak.repository.TokenGenerationRequestRepository;
-import com.example.testnizadatak.repository.TokenRepository;
-import com.example.testnizadatak.repository.UserAccountRepository;
+import com.example.testnizadatak.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;

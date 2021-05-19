@@ -2,7 +2,9 @@ package com.example.testnizadatak.controllers;
 
 import com.example.testnizadatak.models.LoginInfo;
 import com.example.testnizadatak.models.UserAccount;
+import com.example.testnizadatak.repository.UserAccountRepository;
 import com.example.testnizadatak.services.UserAccountService;
+import org.h2.engine.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,14 @@ public class UserAccountController {
 
     @Autowired
     UserAccountService userAccountService;
+
+    @Autowired
+    UserAccountRepository userAccountRepository;
+
+    @GetMapping("/allUsers")
+    private List<UserAccount> findAllUsers() {
+        return userAccountRepository.findAll();
+    }
 
     @GetMapping("/all/{userId}")
     private List<UserAccount> getAll(@PathVariable("userId") long userId){

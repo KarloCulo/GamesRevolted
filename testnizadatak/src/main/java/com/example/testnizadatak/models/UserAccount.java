@@ -1,7 +1,6 @@
 package com.example.testnizadatak.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -36,8 +35,12 @@ public class UserAccount {
     @JsonBackReference
     private Set<Token> tokens;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Company company;
 
-    public UserAccount(String name, String password, String role, float balance, int requestsAvailable) {
+
+    public UserAccount(long id, String name, String password, String role, float balance, int requestsAvailable) {
+        this.id = id;
         this.name = name;
         this.password = password;
         this.role = role;
@@ -112,6 +115,14 @@ public class UserAccount {
 
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     @Override
