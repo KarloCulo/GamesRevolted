@@ -36,6 +36,9 @@ public class UserAccount {
     @JsonBackReference
     private Set<Token> tokens;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Company company;
+
 
     public UserAccount(String name, String password, String role, float balance, int requestsAvailable) {
         this.name = name;
@@ -112,6 +115,14 @@ public class UserAccount {
 
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     @Override
