@@ -1,4 +1,5 @@
 import {Deserializable} from "./deserializable.model";
+import {Company} from './company.model';
 
 export class Account implements Deserializable{
     id : number;
@@ -7,7 +8,7 @@ export class Account implements Deserializable{
     role : string;
     balance : number;
     requestsAvailable : number;
-    companyId: number;
+    company: Company;
 
     deserialize(input: any): this {
         Object.assign(this, input);

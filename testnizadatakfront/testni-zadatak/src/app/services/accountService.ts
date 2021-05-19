@@ -35,8 +35,9 @@ import {Company} from '../models/company.model';
       password: accountForm.get('password').value,
       role: accountForm.get('role').value,
       balance: accountForm.get('balance').value,
-      requestsAvailable: accountForm.get('requestsAvailable').value
-    })
+      requestsAvailable: accountForm.get('requestsAvailable').value,
+      company: accountForm.get('company').value
+    });
   }
 
   getAllCompanys(): Observable<Company[]> {

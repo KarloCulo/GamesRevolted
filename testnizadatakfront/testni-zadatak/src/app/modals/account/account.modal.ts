@@ -15,33 +15,39 @@ import {Company} from '../../models/company.model';
 export class AccountModal {
   selectedUserId: number;
   name: string;
+  companies: Company[];
   accountForm = new FormGroup({
     id: new FormControl(''),
     name: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     role: new FormControl('', Validators.required),
     balance: new FormControl('', Validators.required),
-    requestsAvailable: new FormControl('', Validators.required)
+    requestsAvailable: new FormControl('', Validators.required),
+    company: new FormControl(Company, Validators.required)
   });
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any, private router: Router, private storage: LocalStorage, private accountService: AccountService,
     public dialogRef: MatDialogRef<AccountModal>) {
-      if(data.account.id){
+    if (data) {
+      this.companies = data.companies;
+      if (data.account.id) {
         this.accountForm.patchValue({
           id: data.account.id,
           name: data.account.name,
           password: data.account.password,
           role: data.account.role,
           balance: data.account.balance,
-          requestsAvailable: data.account.requestsAvailable
+          requestsAvailable: data.account.requestsAvailable,
+          company: data.account.company
         });
         this.selectedUserId = data.account.id;
       }
+    }
       else{
         console.log(" NO DATA");
       }
-      console.log(data.companies);
+      console.log(this.accountForm);
     }
 
   onNoClick(): void {
@@ -50,6 +56,7 @@ export class AccountModal {
 
   save(): void{
     console.log("Save: " + this.accountForm);
+    console.log("company", this.accountForm.get('company').value);
     this.dialogRef.close();
     this.accountService.saveUser(this.accountForm).subscribe();
     if(this.storage.getUserId() == this.selectedUserId){

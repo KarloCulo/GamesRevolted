@@ -15,8 +15,8 @@ import {Company} from '../../models/company.model';
 })
 export class AccountComponent implements OnInit{
 
-    accountColumns: string[] = ['name', 'password', 'role', 'balance', 'requestsAvailable', 'actions'];
-    accounts:Account[];
+    accountColumns: string[] = ['name', 'password', 'role', 'balance', 'requestsAvailable', 'company', 'actions'];
+    accounts: Account[];
     userRole : String;
     value: Date;
     isAdmin: boolean;
