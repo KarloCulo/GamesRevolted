@@ -4,6 +4,7 @@ import { Account } from 'src/app/models/account.model';
 import {LocalStorage} from 'src/app/services/localStorage';
 import { AccountModal } from 'src/app/modals/account/account.modal';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {Company} from '../../models/company.model';
 
 
 
@@ -19,6 +20,7 @@ export class AccountComponent implements OnInit{
     userRole : String;
     value: Date;
     isAdmin: boolean;
+    companies: Company[];
 
     constructor(
       private accountService:AccountService, private storage: LocalStorage, private dialog:MatDialog
@@ -27,7 +29,13 @@ export class AccountComponent implements OnInit{
     async ngOnInit(){
       await this.accountService.getAllUsers(this.storage.getUserId()).subscribe(
         res =>{
+          console.log(res);
           this.accounts = res;
+        }
+      );
+      await this.accountService.getAllCompanys().subscribe(
+        res => {
+          this.companies = res;
         }
       );
      if(this.storage.getUserRole() == "admin"){
@@ -36,7 +44,7 @@ export class AccountComponent implements OnInit{
      else this.isAdmin = false;
      console.log("account is admin: " + this.isAdmin);
     }
-    
+
     createNew(): void{
       this.openDialog(new Account());
     }
@@ -44,7 +52,10 @@ export class AccountComponent implements OnInit{
 
     openDialog(element): void{
       const dialogRef = this.dialog.open(AccountModal,{
-          data:element
+          data: {
+            account: element,
+            companies: this.companies
+          }
       });
 
       dialogRef.afterClosed().subscribe(result => {

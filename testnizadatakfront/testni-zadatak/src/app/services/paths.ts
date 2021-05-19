@@ -8,3 +8,4 @@ export const LOGIN = 'http://localhost:8080/useraccount/login';
 export const ACTIVATE = 'http://localhost:8080/token/activate';
 export const SAVEACCOUNT = 'http://localhost:8080/useraccount/save';
 export const SAVETOKEN = 'http://localhost:8080/token/save';
+export const COMPANY = 'http://localhost:8080/company/all';

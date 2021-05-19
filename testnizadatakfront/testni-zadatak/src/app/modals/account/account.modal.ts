@@ -6,6 +6,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import {AccountService} from 'src/app/services/accountService';
 import {LocalStorage} from 'src/app/services/localStorage';
 import {Router} from '@angular/router';
+import {Company} from '../../models/company.model';
 
 @Component({
   selector: 'app-account-modal',
@@ -24,22 +25,23 @@ export class AccountModal {
   });
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Account, private router: Router, private storage: LocalStorage, private accountService: AccountService,
+    @Inject(MAT_DIALOG_DATA) public data: any, private router: Router, private storage: LocalStorage, private accountService: AccountService,
     public dialogRef: MatDialogRef<AccountModal>) {
-      if(data.id){
+      if(data.account.id){
         this.accountForm.patchValue({
-          id: data.id,
-          name: data.name,
-          password: data.password,
-          role: data.role,
-          balance: data.balance,
-          requestsAvailable: data.requestsAvailable
+          id: data.account.id,
+          name: data.account.name,
+          password: data.account.password,
+          role: data.account.role,
+          balance: data.account.balance,
+          requestsAvailable: data.account.requestsAvailable
         });
-        this.selectedUserId = data.id;
+        this.selectedUserId = data.account.id;
       }
       else{
         console.log(" NO DATA");
       }
+      console.log(data.companies);
     }
 
   onNoClick(): void {
@@ -61,5 +63,5 @@ export class AccountModal {
     }
 
   }
-  
+
 }

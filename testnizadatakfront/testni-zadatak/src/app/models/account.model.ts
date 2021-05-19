@@ -7,6 +7,7 @@ export class Account implements Deserializable{
     role : string;
     balance : number;
     requestsAvailable : number;
+    companyId: number;
 
     deserialize(input: any): this {
         Object.assign(this, input);
